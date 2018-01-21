@@ -1,0 +1,56 @@
+#激活哪一个环境的配置文件
+spring:
+  profiles:
+    active: prd
+
+#公共配置
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  # 设置前端页面路径
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  # 配置国际化
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages
+    cache-seconds: 3600
+    
+# 端点映射配置，需要引入加入jar包
+# 内置的端点，比如/beans、/health等等，现在都映射到了/application根上下文下。比如，之前Spring Boot版本中的/beans现在需要通过/application/beans进行访问。
+# Spring Boot 2.0采用一种稍微不同的方式来确保Web端点默认的安全性。Web端点默认是禁用的，management.security.enabled属性已经被移除掉了。
+# 以下为单个端点属性配置
+#endpoints:
+#  info:
+#    enabled: true
+#  beans:
+#    enabled: true
+#  health:
+#    enabled: true
+
+# Spring Boot 2.0采用一种稍微不同的方式来确保Web端点默认的安全性。Web端点默认是禁用的，management.security.enabled属性已经被移除掉了。
+# 将actuator和用户自定义的所有端点暴露出去，可以如下配置
+endpoints:
+  default:
+    web:
+      enabled: true
+
+
+#   测试环境：java -jar my-spring-boot.jar --spring.profiles.active=test
+---
+spring:
+  profiles: dev
+server:
+  port: 8081
+---
+spring:
+  profiles: test
+server:
+  port: 8082
+---
+spring:
+  profiles: prd
+server:
+  port: 8083
