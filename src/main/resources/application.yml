@@ -17,6 +17,13 @@ spring:
     encoding: UTF-8
     basename: i18n/messages
     cache-seconds: 3600
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springbooti18n?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
     
 # 端点映射配置，需要引入加入jar包
 # 内置的端点，比如/beans、/health等等，现在都映射到了/application根上下文下。比如，之前Spring Boot版本中的/beans现在需要通过/application/beans进行访问。
