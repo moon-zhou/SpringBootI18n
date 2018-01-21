@@ -1,6 +1,6 @@
-package com.moonzhou.bean;
+package com.moonzhou.dto;
 
-public class DemoBean {
+public class DemoDto {
     private long id;
 
     private String name;
